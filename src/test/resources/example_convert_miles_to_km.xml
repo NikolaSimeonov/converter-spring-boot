@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns2="http://spring.io/guides/gs-producing-web-service">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <ns2:distanceInMilesRequest>
+            <distanceInMiles>1500.0</distanceInMiles>
+        </ns2:distanceInMilesRequest>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
