@@ -2,6 +2,7 @@
 
 Application that as used as sample back end to WSO 2. Integrator API, and Proxy.
 This is Spring Boot Application that can be used as executable jar.
+It includes integrated Tomcat Application Server.
 The Application converts miles to kilometers and kilometers to miles;
 
 The application can be called on
