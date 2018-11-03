@@ -19,17 +19,24 @@ public class ConverterEndpoint {
 
 
     @PayloadRoot(namespace = "http://spring.io/guides/gs-producing-web-service", localPart = "distanceInKmRequest")
-    public @ResponsePayload DistanceInKmResponse getDistanceInKm(@RequestPayload  DistanceInKmRequest distanceInKmRequest) {
+    public @ResponsePayload DistanceInKmResponse getDistanceInKm(@RequestPayload  DistanceInKmRequest distanceInKmRequest) throws Exception {
 
         DistanceInKmResponse distanceInKmResponse = new DistanceInKmResponse();
+        if(distanceInKmRequest.getDistanceInMiles().compareTo(BigDecimal.ZERO) < 0){
+            throw new Exception("Distance cannot be negative!");
+        }
         distanceInKmResponse.setDistanceInKm(kmInMiles.multiply(distanceInKmRequest.getDistanceInMiles()));
         return distanceInKmResponse;
     }
 
     @PayloadRoot(namespace = "http://spring.io/guides/gs-producing-web-service", localPart = "distanceInMilesRequest")
-    public @ResponsePayload DistanceInMilesResponse getDistanceInMiles(@RequestPayload  DistanceInMilesRequest distanceInMilesRequest) {
+    public @ResponsePayload DistanceInMilesResponse getDistanceInMiles(@RequestPayload  DistanceInMilesRequest distanceInMilesRequest) throws Exception {
 
         DistanceInMilesResponse distanceInMilesResponse = new DistanceInMilesResponse();
+
+        if(distanceInMilesRequest.getDistanceInKm().compareTo(BigDecimal.ZERO) < 0){
+            throw new Exception("Distance cannot be negative!");
+        }
         distanceInMilesResponse.setDistanceInMiles(milesInKm.multiply(distanceInMilesRequest.getDistanceInKm()));
         return distanceInMilesResponse;
     }
